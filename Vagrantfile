@@ -74,6 +74,14 @@ Vagrant.configure(2) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ['./cookbooks']
 
+    chef.add_recipe 'ohai'
+    chef.add_recipe 'build-essential'
     chef.add_recipe 'git'
+    chef.add_recipe 'memcached'
+    chef.add_recipe 'nodejs'
+    chef.add_recipe 'database::sqlite'
+    chef.add_recipe 'xml'
+    chef.add_recipe 'nginx'
+    chef.add_recipe 'imagemagick'
   end
 end
