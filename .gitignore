@@ -4,3 +4,6 @@
 # bundler
 .bundle
 vendor/bundle
+
+# chef
+cookbooks/
