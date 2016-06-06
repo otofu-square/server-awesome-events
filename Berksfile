@@ -1,12 +1,11 @@
 source 'https://api.berkshelf.com'
 
+cookbook 'ohai'
 cookbook 'git'
 cookbook 'build-essential'
 cookbook 'memcached'
 cookbook 'nodejs'
 cookbook 'database'
 cookbook 'xml'
-cookbook 'ruby_build'
-cookbook 'rbenv'
 cookbook 'nginx'
 cookbook 'imagemagick'
