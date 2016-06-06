@@ -75,5 +75,26 @@ Vagrant.configure(2) do |config|
     chef.cookbooks_path = ['./cookbooks']
 
     chef.add_recipe 'git'
+    chef.add_recipe 'build-essential'
+    chef.add_recipe 'memcached'
+    chef.add_recipe 'nodejs'
+    chef.add_recipe 'database'
+    chef.add_recipe 'xml'
+    chef.add_recipe 'ruby_build'
+    chef.add_recipe 'rbenv'
+    chef.add_recipe 'nginx'
+    chef.add_recipe 'imagemagick'
+
+    chef.json = {
+      'rbenv' => {
+        'global' => '2.1.2',
+        'rubies' => ['2.1.2'],
+        'gems' => {
+          '2.1.2' => [
+            { 'name' => 'bundler' }
+          ]
+        }
+      }
+    }
   end
 end
