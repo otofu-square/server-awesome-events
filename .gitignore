@@ -1,1 +1,9 @@
+# Vagrant
 .vagrant/
+
+# bundler
+.bundle
+vendor/bundle
+
+# chef
+cookbooks/
