@@ -1,1 +1,6 @@
+# Vagrant
 .vagrant/
+
+# bundler
+.bundle
+vendor/bundle
