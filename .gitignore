@@ -4,6 +4,11 @@
 # bundler
 .bundle
 vendor/bundle
+
 # chef
 cookbooks/
 /cookbooks/
+
+# key
+site-cookbooks/rails_book_cookbook/files/default/authorized_keys
+site-cookbooks/rails_book_cookbook/files/default/id_rsa
