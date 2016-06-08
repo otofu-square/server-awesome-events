@@ -1,4 +1,4 @@
-%w{build-essential curl zlib1g-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev sqlite3 libsqlite3-dev nodejs make gcc ncurses-dev libgdbm-dev libffi-dev tk-dev libssl-dev libreadline-dev}.each do |pkg|
+%w{build-essential curl zlib1g-dev libreadline-dev libyaml-dev libxml2-dev sqlite3 libsqlite3-dev nodejs make gcc ncurses-dev libgdbm-dev libffi-dev tk-dev libssl-dev libreadline-dev}.each do |pkg|
   package pkg do
     action :install
   end
@@ -36,6 +36,7 @@ bash "insert_line_rbenvpath" do
     chmod 777 ~/.bashrc
     source ~/.bashrc
   EOS
+  not_if "grep 'rbenv init -' /home/ops/.bashrc", :environment => {'HOME' => '/home/ops'}
 end
 
 bash "install ruby" do
@@ -47,4 +48,15 @@ bash "install ruby" do
     /home/ops/.rbenv/bin/rbenv rehash
     /home/ops/.rbenv/bin/rbenv global 2.3.1
   EOS
+  not_if "/home/ops/.rbenv/bin/rbenv global 2.3.1", :environment => {'HOME' => '/home/ops'}
+end
+
+bash "install bundler" do
+  user "ops"
+  group "ops"
+  environment "HOME" => '/home/ops'
+  code <<-EOS
+    /home/ops/.rbenv/shims/gem install bundler
+  EOS
+  not_if "ls /home/ops/.rbenv/shims/bundler", :environment => {'HOME' => '/home/ops'}
 end
