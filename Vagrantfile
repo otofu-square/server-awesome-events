@@ -28,7 +28,7 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.33.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -72,7 +72,7 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = ['./cookbooks']
+    chef.cookbooks_path = ['./cookbooks', './site-cookbooks']
 
     chef.add_recipe 'ohai'
     chef.add_recipe 'build-essential'
@@ -83,5 +83,11 @@ Vagrant.configure(2) do |config|
     chef.add_recipe 'xml'
     chef.add_recipe 'nginx'
     chef.add_recipe 'imagemagick'
+    chef.add_recipe 'rails_book_cookbook::ops_user'
+    chef.add_recipe 'rails_book_cookbook::keys'
+    chef.add_recipe 'rails_book_cookbook::sqlite3_dev'
+    chef.add_recipe 'rails_book_cookbook::nginx_setting'
+    chef.add_recipe 'rails_book_cookbook::rails'
+    chef.add_recipe 'rails_book_cookbook::iptables'
   end
 end

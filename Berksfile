@@ -9,3 +9,4 @@ cookbook 'database'
 cookbook 'xml'
 cookbook 'nginx'
 cookbook 'imagemagick'
+cookbook 'simple_iptables', git:"git://github.com/rtkwlf/cookbook-simple-iptables.git"
